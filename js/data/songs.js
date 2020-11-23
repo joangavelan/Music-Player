@@ -56,17 +56,18 @@ export const songsList = [{
   },
   {
     "id": "9",
-    "url": "../../music/Coldplay - Adventure Of A Lifetime (Official video).mp3",
-    "time": "03:57",
-    "title": "Adventure Of A Lifetime",
-    "artist": "Coldplay"
-  },
-  {
-    "id": "10",
     "url": "../../music/Mark Ronson, Miley Cyrus - Nothing Breaks Like a Heart (Lyrics).mp3",
     "time": "03:37",
     "title": "Nothing Breaks Like a Heart",
     "artist": "Miley Cyrus"
+  },
+  {
+    "id": "10",
+    "url": "../../music/Coldplay - Adventure Of A Lifetime (Official video).mp3",
+    "time": "03:57",
+    "title": "Adventure Of A Lifetime",
+    "artist": "Coldplay"
+    
   },
   {
     "id": "11",
