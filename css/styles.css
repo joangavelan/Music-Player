@@ -63,7 +63,7 @@ body {
 
 .player {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 @media only screen and (max-width: 768px) {
@@ -126,6 +126,7 @@ body {
 }
 
 .playlist__song--active {
+    background-color: rgba(0, 0, 0, 0.3);
     color: var(--light-green);
 }
 
@@ -136,6 +137,7 @@ body {
 .play-pause {
     color: var(--main-font-color);
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .playlist__song-name {

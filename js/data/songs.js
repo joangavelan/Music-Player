@@ -1,85 +1,85 @@
 export const songsList = [{
     "id": "1",
-    "url": "../../music/nice-for-what.mp3",
-    "time": "04:22",
-    "title": "Nice For What",
-    "artist": "Drake"
+    "url": "../../music/Two Door Cinema Club - What You Know [Koverii Rework].mp3",
+    "time": "04:13",
+    "title": "What You Know",
+    "artist": "Two Door Cinema Club"
   },
   {
     "id": "2",
-    "url": "../../music/gods-plan.mp3",
-    "time": "03:19",
-    "title": "God's Plan",
-    "artist": "Drake"
+    "url": "../../music/Hippie Sabotage - Waiting Too Long (Harel Atias Remix).mp3",
+    "time": "03:45",
+    "title": "Waiting Too Long",
+    "artist": "Hippie Sabotage"
   },
   {
     "id": "3",
-    "url": "../../music/professional-rapper.mp3",
-    "time": "05:52",
-    "title": "Professional Rapper ft. Snoop Dog",
-    "artist": "Lil Dicky"
+    "url": "../../music/Pyramid – Cole’s Memories (We Are Your Friends).mp3",
+    "time": "05:51",
+    "title": "Cole's Memories",
+    "artist": "We Are Your Friends"
   },
   {
     "id": "4",
-    "url": "../../music/yellow.mp3",
-    "time": "04:29",
-    "title": "Yellow",
-    "artist": "Coldplay"
+    "url": "../../music/Loud Luxury feat. Brando - Body.mp3",
+    "time": "02:43",
+    "title": "Body",
+    "artist": "Loud Luxury"
   },
   {
     "id": "5",
-    "url": "../../music/get-lucky.mp3",
-    "time": "06:09",
-    "title": "Get Lucky",
-    "artist": "Daft Punk"
+    "url": "../../music/Years & Years – Desire Gryffin Remix (We Are Your Friends soundtrack).mp3",
+    "time": "04:26",
+    "title": "Desire",
+    "artist": "Years & Years"
   },
   {
     "id": "6",
-    "url": "../../music/shape-of-my-heart.mp3",
-    "time": "04:43",
-    "title": "Shape Of My Heart",
-    "artist": "Sting"
+    "url": "../../music/The Less I Know the Sexy Back.mp3",
+    "time": "03:43",
+    "title": "The Less I Know The Sexy Back",
+    "artist": "Tame Impala & Justin Timberlake"
   },
   {
     "id": "7",
-    "url": "../../music/seven-days.mp3",
-    "time": "03:57",
-    "title": "7 days",
-    "artist": "craig David"
+    "url": "../../music/Saint JHN - Roses Imanbek Remix (Official Audio).mp3",
+    "time": "02:50",
+    "title": "Roses",
+    "artist": "SAINt JHN - Imambek"
   },
   {
     "id": "8",
-    "url": "../../music/dilemma.mp3",
-    "time": "04:42",
-    "title": "Nelly Dilemma ft. keylly Rowland",
-    "artist": "Nelly"
+    "url": "../../music/Dayglow - Can I Call You Tonight.mp3",
+    "time": "04:59",
+    "title": "Can I Call You Tonight?",
+    "artist": "Dayglow"
   },
   {
     "id": "9",
-    "url": "../../music/psycho.mp3",
+    "url": "../../music/Coldplay - Adventure Of A Lifetime (Official video).mp3",
     "time": "03:57",
-    "title": "Post Malone Psycho Ft. Ty Dolla",
-    "artist": "Post malone"
+    "title": "Adventure Of A Lifetime",
+    "artist": "Coldplay"
   },
   {
     "id": "10",
-    "url": "../../music/congratulations.mp3",
-    "time": "03:40",
-    "title": "Congratulations ft. Quavo",
-    "artist": "Post Malone"
+    "url": "../../music/Mark Ronson, Miley Cyrus - Nothing Breaks Like a Heart (Lyrics).mp3",
+    "time": "03:37",
+    "title": "Nothing Breaks Like a Heart",
+    "artist": "Miley Cyrus"
   },
   {
     "id": "11",
-    "url": "../../music/rockstar.mp3",
+    "url": "../../music/Redbone - Come and Get Your Love (Single Edit) (Audio).mp3",
     "time": "04:01",
-    "title": "Rockstar",
-    "artist": "Post Malone"
+    "title": "Come and Get Your Love",
+    "artist": "Redbone"
   },
   {
     "id": "12",
-    "url": "../../music/sad.mp3",
-    "time": "02:46",
-    "title": "Sad",
-    "artist": "XXXtentacion"
+    "url": "../../music/Its Been a Long, Long Time.mp3",
+    "time": "03:25",
+    "title": "It's been a Long, Long Time",
+    "artist": "Kitty Kallen"
   },
 ];
