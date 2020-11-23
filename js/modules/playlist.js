@@ -8,6 +8,8 @@ const Playlist = ( _ => {
     let currentSong = new Audio(songs[currentlyPlayingIndex].url)
     let isPlaying = false;
 
+    currentSong.currentTime = 255;
+
     //caching the DOM
     const playlistEl = document.querySelector('.playlist');
 
@@ -30,7 +32,16 @@ const Playlist = ( _ => {
             changeAudioSrc();
             togglePlayPause();
         }
-    } 
+    }
+    
+    const playNext = _ => {
+        if(songs[currentlyPlayingIndex + 1]) { 
+            currentlyPlayingIndex++;
+            changeAudioSrc();
+            togglePlayPause();
+            render();
+        }
+    }
 
     const listeners = _ => {
         playlistEl.addEventListener('click', event => {
@@ -41,10 +52,10 @@ const Playlist = ( _ => {
                 render();
             }
         })
-        //1. get the index of the li tag
-        //2. change the currentPlayingIndex to current index of the li tag
-        //3. play or pause
-        //4. if it's not the same song, then change the src to that new song after changing the currentplayingindex
+
+        currentSong.addEventListener('ended', _ => {
+            playNext();
+        })
     }
 
     const render = _ => {
