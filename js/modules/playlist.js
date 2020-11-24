@@ -6,8 +6,7 @@ const Playlist = ( _ => {
     //data or state
     let songs = songsList;
     let currentlyPlayingIndex = 0;
-    let currentSong = new Audio(songs[currentlyPlayingIndex].url)
-    let isPlaying = false;
+    let currentSong = new Audio(songs[currentlyPlayingIndex].url);
 
     currentSong.currentTime = 255;
 
@@ -22,6 +21,11 @@ const Playlist = ( _ => {
             songsLength: songs.length,
             isPlaying: !currentSong.paused
         });
+    }
+
+    const flip = _ => {
+        togglePlayPause();
+        render();
     }
 
     const changeAudioSrc = _ => currentSong.src = songs[currentlyPlayingIndex].url
@@ -102,7 +106,8 @@ const Playlist = ( _ => {
     }
 
     return {
-        init: init
+        init,
+        flip
     }
 
 })(); 

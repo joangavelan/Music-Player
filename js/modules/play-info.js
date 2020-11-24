@@ -1,3 +1,5 @@
+import Playlist from './playlist.js';
+
 const Playinfo = ( _ => {
 
     const state = {
@@ -20,8 +22,20 @@ const Playinfo = ( _ => {
         render();
     }
 
+    const listeners = _ => {
+        playerTriggerEL.addEventListener('click', _ => {
+            //1. change our own (Playinfo's) state
+            state.isPlaying = state.isPlaying ? false : true;
+            //2. render
+            render();
+            //3. toggle the playpause song functionality
+            Playlist.flip();
+        })
+    }
+
     const init = _ => {
         render();
+        listeners();
     }
 
 
