@@ -9,8 +9,6 @@ const Playlist = ( _ => {
     let currentlyPlayingIndex = 0;
     let currentSong = new Audio(songs[currentlyPlayingIndex].url);
 
-    currentSong.currentTime = 255;
-
     //caching the DOM
     const playlistEl = document.querySelector('.playlist');
 
