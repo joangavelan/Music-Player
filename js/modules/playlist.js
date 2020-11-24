@@ -1,5 +1,6 @@
 import {songsList} from '../data/songs.js';
 import PlayInfo from '../modules/play-info.js';
+import TrackBar from './track-bar.js';
 
 const Playlist = ( _ => {
 
@@ -22,6 +23,10 @@ const Playlist = ( _ => {
             isPlaying: !currentSong.paused
         });
     }
+
+    currentSong.addEventListener('timeupdate', _ => {
+        TrackBar.setState(currentSong);
+    })
 
     const flip = _ => {
         togglePlayPause();
