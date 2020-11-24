@@ -1,4 +1,5 @@
 import {songsList} from '../data/songs.js';
+import PlayInfo from '../modules/play-info.js';
 
 const Playlist = ( _ => {
 
@@ -17,6 +18,10 @@ const Playlist = ( _ => {
     const init = _ => {
         render();
         listeners();
+        PlayInfo.setState({
+            songsLength: songs.length,
+            isPlaying: !currentSong.paused
+        });
     }
 
     const changeAudioSrc = _ => currentSong.src = songs[currentlyPlayingIndex].url
@@ -32,6 +37,11 @@ const Playlist = ( _ => {
             changeAudioSrc();
             togglePlayPause();
         }
+
+        PlayInfo.setState({
+            songsLength: songs.length,
+            isPlaying: !currentSong.paused
+        });
     }
     
     const playNext = _ => {

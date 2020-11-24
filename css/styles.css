@@ -30,6 +30,7 @@ body {
     opacity: .9;
     transition: .1s all ease;
     cursor: pointer;
+    color: var(--main-font-color);
 }
 
 .button:hover {
