@@ -1,39 +1,39 @@
 import Playlist from './playlist.js';
 
-const Playinfo = ( _ => {
+const PlayInfo = (() => {
 
     const state = {
         songsLength: 0,
         isPlaying: false
     }
 
-    //cache the DOM 
-    const playerCountEl = document.querySelector('.player__count')
-    const playerTriggerEL = document.querySelector('.player__trigger')
+    //cache the DOM
+    const playerCountEl = document.querySelector('.player__count');
+    const playerTriggerEl = document.querySelector('.player__trigger');
 
-    const render = _ => {
-        playerCountEl.innerHTML = state.songsLength;
-        playerTriggerEL.innerHTML = state.isPlaying ? 'Pause' : 'Play';
-    }
-
-    const setState = obj => {
+    const setState = (obj) => {
         state.songsLength = obj.songsLength;
         state.isPlaying = obj.isPlaying;
         render();
     }
 
-    const listeners = _ => {
-        playerTriggerEL.addEventListener('click', _ => {
-            //1. change our own (Playinfo's) state
+    const render = () => {
+        playerCountEl.innerHTML = state.songsLength;
+        playerTriggerEl.innerHTML = state.isPlaying ? 'Pause' : 'Play';
+    }
+
+    const listeners = () => {
+        playerTriggerEl.addEventListener('click', () => {
+            //1.change our own {Playinfo's} state
             state.isPlaying = state.isPlaying ? false : true;
-            //2. render
+            //2.render
             render();
-            //3. toggle the playpause song functionality
+            //3. toggle play pause
             Playlist.flip();
         })
     }
 
-    const init = _ => {
+    const init = () => {
         render();
         listeners();
     }
@@ -43,7 +43,6 @@ const Playinfo = ( _ => {
         init,
         setState
     }
-
 })();
 
-export default Playinfo;
+export default PlayInfo;

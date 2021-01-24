@@ -1,5 +1,5 @@
 import Playlist from './modules/playlist.js';
-import Playinfo from './modules/play-info.js';
+import PlayInfo from './modules/play-info.js';
 
 Playlist.init();
-Playinfo.init();
+PlayInfo.init();
