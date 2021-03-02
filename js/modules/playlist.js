@@ -1,111 +1,79 @@
-import {songsList} from '../data/songs.js';
-import PlayInfo from './play-info.js';
-import TrackBar from './track-bar.js';
+import { songsList } from '../data/songs.js'
 
 const Playlist = (() => {
-    //cache the DOM
-    const playlistEl = document.querySelector('.playlist');
-    //data and state
-    let songs = songsList;
-    let currentPlayingIndex = 0;
-    let currentSong = new Audio(songs[currentPlayingIndex].url);    
+  const playlistEl = document.querySelector('.playlist');
 
-    const toggleIcon = (itemIndex) => {
-        if(currentPlayingIndex === itemIndex) {
-            return currentSong.paused ? 'fa-play' : 'fa-pause';
-        }
-        else return 'fa-play';
-    }
+  let currentIndex = 0;
 
-    const render = () => {
-        let markup = '';
-        songs.forEach((song, index) => {
-            markup += `
-            <li class="playlist__song ${index === currentPlayingIndex ? 'playlist__song--active' : ''}">
-                <div class="play-pause">
-                    <i class="fa ${toggleIcon(index)} pp-icon"></i>
-                </div>
-                <div class="playlist__song-details">
-                    <span class="playlist__song-name">${song.title}</span>
-                    <br>
-                    <span class="playlist__song-artist">${song.artist}</span>
-                </div>
-                <div class="playlist__song-duration">
-                    ${song.time}
-                </div>
-            </li>
-        `
-        })
-        playlistEl.innerHTML = markup;
-    }
+  const currentSong = new Audio(songsList[currentIndex].src);
 
-    const flip = () => {
-        togglePlayPause();
+  const switchPlay = (songIndex) => {
+    currentIndex = songIndex;
+    currentSong.src = songsList[currentIndex].src;
+    togglePlay();
+  }
+  
+  const toggleIcon = () => currentSong.paused ? 'fa-play' : 'fa-pause';
+  
+  const togglePlay = () => {
+    currentSong.paused ? currentSong.play() : currentSong.pause();
+    render();
+  }
+
+  const render = () => {
+    let markup = '';
+
+    songsList.forEach((song, index) => {
+      markup += `
+        <li class="playlist__song ${currentIndex === index ? 'playlist__song--active' : ''}">
+          <div class="play-pause">
+              <i class="fa ${currentIndex === index ? toggleIcon() : 'fa-play'} pp-icon"></i>
+          </div>
+          <div class="playlist__song-details">
+              <span class="playlist__song-name">${song.title}</span>
+              <br>
+              <span class="playlist__song-artist">${song.artist}</span>
+          </div>
+          <div class="playlist__song-duration">
+              ${song.time}
+          </div>
+        </li>
+      `
+
+      playlistEl.innerHTML = markup;
+    })
+  }
+ 
+  const listeners = () => {
+    playlistEl.addEventListener('click', (e) => {
+      if(e.target.classList.contains('fa')) {
+        const clickedSong = e.target.parentElement.parentElement;
+        const songIndex = [...playlistEl.children].indexOf(clickedSong);
+        songIndex === currentIndex ? togglePlay() : switchPlay(songIndex);
+      }
+    })
+
+    currentSong.addEventListener('ended', () => {
+      if(songsList[currentIndex + 1]) {
+        currentIndex++
+        switchPlay(currentIndex)
+      } else {
+        currentIndex = 0;
+        currentSong.src = songsList[currentIndex].src;
         render();
-    }
+      }
+    })
+  }
+  
+  const init = () => {
+    render();
+    listeners();
+  }
 
-    const playNext = () => {
-        if(songs[currentPlayingIndex + 1]) {
-            currentPlayingIndex++;
-            changeAudioSrc();
-            currentSong.play();
-            render();
-        }
-    }
-
-    const changeAudioSrc = () => currentSong.src = songs[currentPlayingIndex].url;
-
-    const togglePlayPause = () => currentSong.paused ? currentSong.play() : currentSong.pause();
-
-    const mainPlay = elemIndex => {
-        if(currentPlayingIndex === elemIndex) {
-            togglePlayPause();
-        } else {
-            currentPlayingIndex = elemIndex;
-            changeAudioSrc();
-            togglePlayPause();  
-        }
-
-        PlayInfo.setState({
-            songsLength: songs.length,
-            isPlaying: !currentSong.paused
-        })
-    }
-
-    const listeners = () => {
-        playlistEl.addEventListener('click', event => {
-            if(event.target.matches('.fa')) {
-                const playlistItem = event.target.parentNode.parentNode;
-                const playlistItemIndex = [...playlistEl.children].indexOf(playlistItem);
-                mainPlay(playlistItemIndex);
-                render();
-            }
-        })
-
-        currentSong.addEventListener('timeupdate', () => {
-            TrackBar.setState(currentSong);
-        })
-
-        currentSong.addEventListener('ended', () => {
-            playNext();
-        })
-    }
-
-    const init = () => {
-        render();
-        listeners();
-        PlayInfo.setState({
-            songsLength: songs.length,
-            isPlaying: !currentSong.paused
-        })
-    }
-
-    return {
-        init,
-        flip
-    }    
-
-})();
+  return {
+    init
+  }
+})(); 
 
 
-export default Playlist;
+export default Playlist
