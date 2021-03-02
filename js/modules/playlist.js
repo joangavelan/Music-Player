@@ -1,3 +1,4 @@
+import PlayInfo from './play-info.js'
 import { songsList } from '../data/songs.js'
 
 const Playlist = (() => {
@@ -17,6 +18,7 @@ const Playlist = (() => {
   
   const togglePlay = () => {
     currentSong.paused ? currentSong.play() : currentSong.pause();
+    PlayInfo.setState(!currentSong.paused); 
     render();
   }
 
@@ -39,10 +41,10 @@ const Playlist = (() => {
           </div>
         </li>
       `
-
       playlistEl.innerHTML = markup;
     })
   }
+
  
   const listeners = () => {
     playlistEl.addEventListener('click', (e) => {
@@ -71,7 +73,8 @@ const Playlist = (() => {
   }
 
   return {
-    init
+    init,
+    togglePlay
   }
 })(); 
 
