@@ -1,5 +1,6 @@
 import PlayInfo from './play-info.js'
 import { songsList } from '../data/songs.js'
+import TrackBar from './track-bar.js'
 
 const Playlist = (() => {
   const playlistEl = document.querySelector('.playlist');
@@ -8,9 +9,11 @@ const Playlist = (() => {
 
   const currentSong = new Audio(songsList[currentIndex].src);
 
+  const updateAudioSrc = () => currentSong.src = songsList[currentIndex].src;
+
   const switchPlay = (songIndex) => {
     currentIndex = songIndex;
-    currentSong.src = songsList[currentIndex].src;
+    updateAudioSrc();
     togglePlay();
   }
   
@@ -45,7 +48,6 @@ const Playlist = (() => {
     })
   }
 
- 
   const listeners = () => {
     playlistEl.addEventListener('click', (e) => {
       if(e.target.classList.contains('fa')) {
@@ -61,9 +63,14 @@ const Playlist = (() => {
         switchPlay(currentIndex)
       } else {
         currentIndex = 0;
-        currentSong.src = songsList[currentIndex].src;
+        updateAudioSrc();
+        PlayInfo.setState(!currentSong.paused);
         render();
       }
+    })
+
+    currentSong.addEventListener('timeupdate', () => {
+      TrackBar.render(currentSong);
     })
   }
   
@@ -77,6 +84,5 @@ const Playlist = (() => {
     togglePlay
   }
 })(); 
-
 
 export default Playlist
